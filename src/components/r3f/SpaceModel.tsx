@@ -1,10 +1,10 @@
 "use client";
 
-import { useRef } from "react";
-import { useFrame } from "@react-three/fiber";
+import React, { useRef } from "react";
+import { useFrame, type ThreeElements } from "@react-three/fiber";
 import * as THREE from "three";
 
-export default function SpaceModel(props: JSX.IntrinsicElements["group"]) {
+export default function SpaceModel(props: ThreeElements['group']) {
   const planetRef = useRef<THREE.Mesh>(null);
   const cloudsRef = useRef<THREE.Mesh>(null);
   const ringRef = useRef<THREE.Mesh>(null);

@@ -1,7 +1,7 @@
 "use client";
 
 import { useFrame, useThree } from "@react-three/fiber";
-import { useRef, useEffect, useMemo } from "react";
+import { useRef, useEffect } from "react";
 import * as THREE from "three";
 
 /**
@@ -9,7 +9,10 @@ import * as THREE from "three";
  * Ensures the model is fully visible at the end, adapting to FOV and aspect ratio.
  */
 export default function IntroCamera({ active, onFinish }: { active: boolean; onFinish: () => void }) {
-  const { camera, scene, size } = useThree();
+const { camera, scene, size } = useThree();
+
+  const currentCameraFov = camera instanceof THREE.PerspectiveCamera ? camera.fov : undefined;
+  const currentCameraAspect = camera instanceof THREE.PerspectiveCamera ? camera.aspect : undefined;
 
   // Timing
   const t = useRef(0);
@@ -39,8 +42,11 @@ export default function IntroCamera({ active, onFinish }: { active: boolean; onF
       const sphere = new THREE.Sphere();
       box.getBoundingSphere(sphere);
 
-      const vFov = THREE.MathUtils.degToRad(camera.fov);
-      const hFov = 2 * Math.atan(Math.tan(vFov / 2) * camera.aspect);
+      // Type assertion to PerspectiveCamera to access fov and aspect
+      if (camera instanceof THREE.PerspectiveCamera) { // Ensure it's a PerspectiveCamera to access fov/aspect
+      const perspectiveCamera = camera;
+      const vFov = THREE.MathUtils.degToRad(perspectiveCamera.fov);
+      const hFov = 2 * Math.atan(Math.tan(vFov / 2) * perspectiveCamera.aspect);
       const fitHeightDist = sphere.radius / Math.tan(vFov / 2);
       const fitWidthDist = sphere.radius / Math.tan(hFov / 2);
       const dist = Math.max(fitHeightDist, fitWidthDist) * 1.2; // padding
@@ -52,11 +58,15 @@ export default function IntroCamera({ active, onFinish }: { active: boolean; onF
       // Optionally, lift a touch for a top-grade composition
       fit.current.y += sphere.radius * 0.15;
     } else {
+      // Fallback if model found but camera is not PerspectiveCamera
+      fit.current = new THREE.Vector3(0, 1.1, 3.6);
+    }
+    } else {
       // Fallback if model hasn't been found yet
       fit.current = new THREE.Vector3(0, 1.1, 3.6);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [camera.fov, camera.aspect, size.width, size.height]);
+  }, [currentCameraFov, currentCameraAspect, size.width, size.height]);
 
   useFrame((_, delta) => {
     if (!active) return;

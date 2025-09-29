@@ -4,7 +4,7 @@ export default function Contact() {
       <div className="md:col-span-2">
         <p className="text-foreground/80">Have a project in mind or want to collaborate? I’d love to hear about it.</p>
         <a
-          href="mailto:sanaullah@example.com"
+          href="mailto:sanaullahdev7@gmail.com"
           className="mt-4 inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-sky-500 to-fuchsia-500 px-4 py-2 text-sm font-medium text-white shadow hover:opacity-95 transition"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
