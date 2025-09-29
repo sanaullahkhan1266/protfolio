@@ -2,7 +2,10 @@
 
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useState } from "react";
+import { Preload, AdaptiveDpr } from "@react-three/drei";
 import Scene from "./r3f/Scene";
+import IntroCamera from "./r3f/IntroCamera";
+import SpaceField from "./r3f/SpaceField";
 
 function Loader() {
   return (
@@ -14,6 +17,7 @@ function Loader() {
 
 export default function ThreeBackground() {
   const [mounted, setMounted] = useState(false);
+  const [intro, setIntro] = useState(true);
   useEffect(() => setMounted(true), []);
 
   return (
@@ -25,11 +29,20 @@ export default function ThreeBackground() {
           dpr={[1, 2]}
           gl={{ antialias: true }}
         >
-          <Suspense fallback={<Loader />}> 
-            <Scene />
+          {/* Important: DOM cannot be rendered inside Canvas Suspense */}
+          <Suspense fallback={null}>
+            {/* Starfield background */}
+            <SpaceField />
+            {/* Intro camera zooms into the helmet eye on first load */}
+            {intro ? <IntroCamera active={intro} onFinish={() => setIntro(false)} /> : null}
+            <Scene controlsEnabled={!intro} />
+            <Preload all />
+            <AdaptiveDpr pixelated />
           </Suspense>
         </Canvas>
       ) : null}
+      {/* Optional: show a loader overlay while the app mounts (outside Canvas tree) */}
+      {!mounted ? <Loader /> : null}
     </div>
   );
 }

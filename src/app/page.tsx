@@ -2,6 +2,9 @@ import ThreeBackground from "@/components/ThreeBackground";
 import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
 import Section from "@/components/Section";
+import ProjectsGrid from "@/components/ProjectsGrid";
+import Skills from "@/components/Skills";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
@@ -10,26 +13,26 @@ export default function Home() {
       <NavBar />
       <main className="mx-auto max-w-6xl px-6">
         <Hero />
-        <Section id="work" title="Work">
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
-            <li className="rounded-xl border border-foreground/10 bg-background/60 p-5 backdrop-blur">
-              <h3 className="font-semibold">Project One</h3>
-              <p className="text-sm text-foreground/80">Brief description of the project, stack, and impact. Link to repo or live demo.</p>
-            </li>
-            <li className="rounded-xl border border-foreground/10 bg-background/60 p-5 backdrop-blur">
-              <h3 className="font-semibold">Project Two</h3>
-              <p className="text-sm text-foreground/80">Brief description of the project, stack, and impact. Link to repo or live demo.</p>
-            </li>
-          </ul>
+        <Section id="work" title="Selected Work">
+          <ProjectsGrid />
         </Section>
         <Section id="about" title="About">
           <p>
-            Short bio and what you do. Tools you love, how you collaborate, and the kind of work you’re excited about.
+            I’m <strong>Sanaullah</strong>, a <strong>Blockchain</strong> and <strong>AI</strong> developer with strong experience building
+            <strong> fintech</strong> applications. I design and ship secure, scalable systems—from smart contracts and on-chain data
+            pipelines to AI-driven services and real-time dashboards. I focus on clear architecture, maintainable code, and delivering
+            measurable business impact.
           </p>
+        </Section>
+        <Section id="skills" title="Skills">
+          <Skills />
+        </Section>
+        <Section id="contact" title="Contact">
+          <Contact />
         </Section>
       </main>
       <footer className="mx-auto max-w-6xl px-6 py-10 text-sm text-foreground/70">
-        © {new Date().getFullYear()} Your Name
+        © {new Date().getFullYear()} Sanaullah
       </footer>
     </div>
   );

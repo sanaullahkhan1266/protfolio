@@ -1,20 +1,36 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
+const geistSans = Space_Grotesk({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
+const geistMono = JetBrains_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Your Name — Portfolio",
-  description: "A professional portfolio built with Next.js and React Three Fiber.",
+  title: "Sanaullah — Blockchain & AI Developer",
+  description: "Portfolio of Sanaullah, a Blockchain & AI developer with strong experience building fintech applications.",
+  metadataBase: new URL("https://example.com"),
+  openGraph: {
+    title: "Sanaullah — Blockchain & AI Developer",
+    description:
+      "Portfolio of Sanaullah, a Blockchain & AI developer with strong experience building fintech applications.",
+    url: "https://example.com",
+    siteName: "Sanaullah Portfolio",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sanaullah — Blockchain & AI Developer",
+    description:
+      "Portfolio of Sanaullah, a Blockchain & AI developer with strong experience building fintech applications.",
+  },
   formatDetection: {
     telephone: false,
     date: false,

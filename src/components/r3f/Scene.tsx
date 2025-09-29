@@ -1,36 +1,48 @@
 "use client";
 
-import { ContactShadows, Environment, OrbitControls } from "@react-three/drei";
+import { Environment, OrbitControls, Float } from "@react-three/drei";
 import Model from "./Model";
+import { MODEL_URL } from "@/config/scene";
+import { useEffect, useState } from "react";
 
-export default function Scene() {
+type Props = {
+  controlsEnabled?: boolean;
+};
+
+export default function Scene({ controlsEnabled = true }: Props) {
+  const [hasModel, setHasModel] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    let alive = true;
+    fetch(MODEL_URL, { method: "HEAD" })
+      .then((res) => alive && setHasModel(res.ok))
+      .catch(() => alive && setHasModel(false));
+    return () => {
+      alive = false;
+    };
+  }, []);
+
   return (
     <>
-      {/* Background */}
-      <color attach="background" args={["#241434"]} />
+      {/* Black background */}
+      <color attach="background" args={["#000000"]} />
 
-      {/* Environment lighting and gentle key/back lights */}
-      <Environment preset="city" />
+      {/* Space lighting */}
+      <ambientLight intensity={0.14} />
+      <directionalLight position={[3, 5, 2]} intensity={0.75} color="#7ab6ff" castShadow />
+      <pointLight position={[-4, 1.5, -2]} intensity={0.5} color="#6d28d9" />
 
-      {/* Ground */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.6, 0]} receiveShadow>
-        <planeGeometry args={[50, 50]} />
-        <meshStandardMaterial color="#120b1a" roughness={1} metalness={0} />
-      </mesh>
+      {/* Night environment reflections */}
+      <Environment preset="night" />
 
-      {/* Contact shadows for realism */}
-      <ContactShadows
-        position={[0, -0.59, 0]}
-        opacity={0.6}
-        scale={6}
-        blur={2.5}
-        far={4}
-      />
+      {/* Floating space asset model (provide /public/models/space.glb) */}
+      {hasModel ? (
+        <Float speed={0.9} rotationIntensity={0.12} floatIntensity={0.7}>
+          <Model name="spaceAsset" url={MODEL_URL} scaleFactor={1.2} />
+        </Float>
+      ) : null}
 
-      {/* Centered hero model */}
-      <Model rotation={[0, Math.PI * 0.25, 0]} scaleFactor={1.2} />
-
-      <OrbitControls enablePan={false} enableZoom={false} autoRotate autoRotateSpeed={0.4} />
+      <OrbitControls enablePan={false} enableZoom={false} enabled={controlsEnabled} autoRotate={controlsEnabled} autoRotateSpeed={0.35} />
     </>
   );
 }

@@ -11,7 +11,7 @@ export type ModelProps = ThreeElements["group"] & {
 export default function Model({ url = "/models/hero.glb", scaleFactor = 1, ...props }: ModelProps) {
   const gltf = useGLTF(url);
   return (
-    <group {...props}>
+    <group name="heroModel" {...props}>
       <Center disableZ>
         {/* Primitive keeps original materials/textures */}
         {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
