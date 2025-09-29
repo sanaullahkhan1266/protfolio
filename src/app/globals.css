@@ -20,7 +20,22 @@
 }
 
 body {
-  background: var(--background);
+  background: radial-gradient(1200px 800px at 10% -10%, #0b1b2a55, transparent),
+    radial-gradient(1200px 800px at 110% 10%, #3a1d4a55, transparent),
+    var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Subtle grid overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(var(--foreground)/3% 1px, transparent 1px),
+    linear-gradient(90deg, var(--foreground)/3% 1px, transparent 1px);
+  background-size: 48px 48px, 48px 48px;
+  mask-image: radial-gradient(circle at 50% 20%, black 0%, transparent 60%);
+  opacity: 0.2;
+  z-index: -1;
 }
