@@ -2,12 +2,39 @@
 
 A modern, interactive portfolio website showcasing my skills, projects, and experience as a Full Stack Developer. Built with cutting-edge technologies and featuring stunning 3D visuals.
 
+## 🚀 **[Live Demo](https://your-portfolio-url.vercel.app)** • **[Report Bug](https://github.com/sanaullahkhan1266/protfolio/issues)** • **[Request Feature](https://github.com/sanaullahkhan1266/protfolio/issues)**
+
+## 📋 Table of Contents
+
+- [Features](#-features)
+- [Screenshots](#-screenshots)  
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Getting Started](#-getting-started)
+- [Customization](#-customization)
+- [Features Overview](#-features-overview)
+- [Deployment](#-deployment)
+- [Contact](#-contact)
+- [License](#-license)
+
+**📚 Additional Documentation:**
+- [📋 Deployment Guide](DEPLOYMENT.md) - Complete deployment instructions
+- [🤝 Contributing Guidelines](CONTRIBUTING.md) - How to contribute
+- [📱 Social Media Kit](SOCIAL_MEDIA.md) - Ready-to-share content
+
 ![Portfolio Preview](https://img.shields.io/badge/Status-Live-brightgreen)
-![Next.js](https://img.shields.io/badge/Next.js-15.5.4-black)
-![React](https://img.shields.io/badge/React-19.1.0-blue)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
-![Three.js](https://img.shields.io/badge/Three.js-0.180.0-green)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-blue)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
+![GitHub stars](https://img.shields.io/github/stars/sanaullahkhan1266/protfolio?style=social)
+![GitHub forks](https://img.shields.io/github/forks/sanaullahkhan1266/protfolio?style=social)
+
+![Next.js](https://img.shields.io/badge/Next.js-15.5.4-black?logo=next.js)
+![React](https://img.shields.io/badge/React-19.1.0-blue?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
+![Three.js](https://img.shields.io/badge/Three.js-0.180.0-green?logo=three.js)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-blue?logo=tailwindcss)
+![Node.js](https://img.shields.io/badge/Node.js-18+-green?logo=node.js)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/sanaullahkhan1266/protfolio)
 
 ## 🚀 Features
 
@@ -19,6 +46,26 @@ A modern, interactive portfolio website showcasing my skills, projects, and expe
 - **Project Showcase**: Dynamic grid displaying featured projects
 - **Skills Section**: Visual representation of technical skills
 - **Smooth Animations**: Framer Motion-like animations and transitions
+
+## 📸 Screenshots
+
+### 🖼️ Desktop View
+![Hero Section Desktop](assets/hero-desktop.png)
+*Interactive 3D space model with smooth animations*
+
+### 📱 Mobile Responsive
+![Mobile View](assets/hero-mobile.png)
+*Fully responsive design optimized for all devices*
+
+### 💼 Projects Showcase
+![Projects Grid](assets/projects-grid.png)
+*Dynamic project grid with hover effects*
+
+### 🎆 3D Interaction
+![3D Animation](assets/3d-interaction.gif)
+*Interactive 3D model with orbital animations*
+
+> 📝 **Note**: Screenshots will be added once the portfolio is deployed and live.
 
 ## 🛠️ Tech Stack
 

@@ -1,7 +1,29 @@
 {
-  "name": "portfolio",
-  "version": "0.1.0",
-  "private": true,
+  "name": "sanaullah-portfolio",
+  "version": "1.0.0",
+  "description": "Modern interactive portfolio built with Next.js 15, React 19, Three.js featuring 3D visuals, responsive design, and smooth animations",
+  "author": "Sanaullah Khan <sanaullahdev7@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/sanaullahkhan1266/protfolio#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sanaullahkhan1266/protfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sanaullahkhan1266/protfolio/issues"
+  },
+  "keywords": [
+    "portfolio",
+    "nextjs",
+    "react",
+    "typescript",
+    "threejs",
+    "tailwindcss",
+    "3d-graphics",
+    "responsive-design",
+    "web-development"
+  ],
+  "private": false,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
